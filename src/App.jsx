@@ -1,26 +1,20 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import ListItems from "./assets/_components/ListItems";
 
 function App() {
-  const [todoList, setTodoList] = useState([
-    {
-      id: nanoid(),
-      content: "Wiwi",
-    },
-    {
-      id: nanoid(),
-      content: "item2",
-    },
-    {
-      id: nanoid(),
-      content: "item3",
-    },
-  ]);
+  const getTodosFromLocalStorage = () => {
+    const savedTodos = localStorage.getItem("todoList");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  };
 
+  const [todoList, setTodoList] = useState(getTodosFromLocalStorage);
   const [todo, setTodo] = useState("");
   const [showValidation, setShowValidation] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
 
   function deleteTodo(id) {
     setTodoList(todoList.filter((todo) => todo.id !== id));
