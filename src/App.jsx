@@ -47,7 +47,7 @@ function App() {
               className="mt-block w-full rounded"
             />
             {showValidation && (
-              <p className="text-red-400">Ajoute une tâche avant Bg</p>
+              <p className="text-red-400">Ajoutes une tâche avant Bg</p>
             )}
             <button className="mt-4 py-2 bg-slate-50 rounded min-w[115px] px-10">
               Ajouter
@@ -56,7 +56,7 @@ function App() {
           <ul>
             {todoList.length === 0 && (
               <li className="text-slate-50">
-                Tu as tout accomplis Bg, rajoute une nouvelle tâche !
+                Tu as tout accompli Bg, rajoute une nouvelle tâche !
               </li>
             )}
             {todoList.map((item) => (
